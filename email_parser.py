@@ -13,7 +13,7 @@ Be conservative with urgency_score — only use 4-5 for genuine emergencies
 
 def parse_email(raw_email: str) -> dict:
     response = client.chat.completions.create(
-        model="gpt-5.4-mini",
+        model="gpt-4o-mini",
         temperature=0.3,  # low temp — this is extraction, not creativity
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
