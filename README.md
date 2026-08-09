@@ -4,7 +4,7 @@
 
 Built as a proof-of-concept for the kind of layer a support or sales team could plug in front of an inbox to auto-route tickets, instead of a human reading and tagging every email manually.
 
-🔗 **Live demo:** [your-streamlit-link-here](#)
+🔗 **Live demo:** [email-intent-parser](https://email-intent-parser-2026.streamlit.app/)
 🎥 **60-sec walkthrough:** [Loom link here](#)
 
 ---
