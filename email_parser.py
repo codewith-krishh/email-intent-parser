@@ -1,8 +1,8 @@
 import os, json
-from openai import OpenAI  # swap to `from openai import OpenAI` if using OpenAI
+from groq import Groq
 from schema import EMAIL_SCHEMA
 
-client = OpenAI(base_url="https://models.github.ai/inference",api_key=os.environ["GITHUB_OPENAI_AI_KEY"])
+client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
 SYSTEM_PROMPT = """You are an email triage assistant for a SaaS support team.
 Analyze the raw email and extract structured intent data.
@@ -13,7 +13,7 @@ Be conservative with urgency_score — only use 4-5 for genuine emergencies
 
 def parse_email(raw_email: str) -> dict:
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="llama-3.3-70b-versatile",
         temperature=0.3,  # low temp — this is extraction, not creativity
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},

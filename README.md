@@ -4,7 +4,7 @@
 
 Built as a proof-of-concept for the kind of layer a support or sales team could plug in front of an inbox to auto-route tickets, instead of a human reading and tagging every email manually.
 
-🔗 **Live demo:** [your-streamlit-link-here](#)
+🔗 **[Live Demo](https://email-intent-parser-2026.streamlit.app/)**
 🎥 **60-sec walkthrough:** [Loom link here](#)
 
 ---
@@ -53,7 +53,7 @@ The live demo runs on a real API key. A session-based limit (5 requests) plus an
 
 ## Tech stack
 
-- **LLM:** [Groq API / OpenAI — update based on final version] with structured output (JSON mode)
+- **LLM:** Groq API with structured output (JSON mode)
 - **Frontend:** Streamlit
 - **Language:** Python 3.11
 - **Deployment:** Streamlit Community Cloud
@@ -70,7 +70,7 @@ pip install -r requirements.txt
 
 Create a `.env` file:
 ```
-OPENAI_API_KEY=your_key_here
+GROQ_API_KEY=your_key_here
 ```
 
 Run:
