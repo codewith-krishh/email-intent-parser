@@ -1,6 +1,6 @@
 import os, json
 from groq import Groq
-from schema import EMAIL_SCHEMA
+from schema import EmailAnalysis
 
 client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
@@ -9,16 +9,16 @@ Analyze the raw email and extract structured intent data.
 Be conservative with urgency_score — only use 4-5 for genuine emergencies
 (service down, data loss, security issue, active churn threat)."""
 
-
-
 def parse_email(raw_email: str) -> dict:
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
-        temperature=0.3,  # low temp — this is extraction, not creativity
+        temperature=0.3,
         messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": SYSTEM_PROMPT + f"\n\nRespond ONLY with valid JSON matching this structure: {EmailAnalysis.model_json_schema()}"},
             {"role": "user", "content": raw_email}
         ],
-        response_format=EMAIL_SCHEMA
+        response_format={"type": "json_object"}
     )
-    return json.loads(response.choices[0].message.content)
+    raw_json = json.loads(response.choices[0].message.content)
+    validated = EmailAnalysis.model_validate(raw_json)  # catches bad output here, not downstream in the UI
+    return validated.model_dump()
