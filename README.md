@@ -6,7 +6,7 @@ Built as a proof-of-concept for the kind of layer a support or sales team could 
 
 
 🔗 **Live demo:** [email-intent-parser](https://email-intent-parser-2026.streamlit.app/)
-🎥 **60-sec walkthrough:** [Loom link here](#)
+🎥 **60-sec walkthrough:** [demo link here](https://youtu.be/GvJFM84OSqI)
 
 ---
 
