@@ -11,7 +11,7 @@ Be conservative with urgency_score — only use 4-5 for genuine emergencies
 
 def parse_email(raw_email: str) -> dict:
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="openai/gpt-oss-120b",
         temperature=0.3,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT + f"\n\nRespond ONLY with valid JSON matching this structure: {EmailAnalysis.model_json_schema()}"},
